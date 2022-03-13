@@ -11,3 +11,10 @@ Module_00/ex01/CMakeLists.txt
 .idea/
 cmake-build-debug/
 CMakeLists.txt
+Module_00/ex02/Account.o
+Module_00/ex02/go
+Module_00/ex02/test.o
+Module_00/ex01/Contact.o
+Module_00/ex01/PhoneBook.o
+Module_00/ex01/main.o
+Module_00/ex01/phonebook
