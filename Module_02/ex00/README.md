@@ -2,7 +2,7 @@
 С конструктором, деструктором, переопределением оператора присваивания и конструктором копирования.
 
 main:
-![](img/Screen_1.png)
+![](https://github.com/wyholger/cpp/blob/master/Module_02/ex00/img/Screen_1.png?raw=true)
 
 output:
-![](img/Screen_2.png)
+![](https://github.com/wyholger/cpp/blob/master/Module_02/ex00/img/Screen_2.png?raw=true)
