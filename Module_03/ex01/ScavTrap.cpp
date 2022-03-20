@@ -11,14 +11,15 @@ ScavTrap::ScavTrap()
 	this->damage_ = 20;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap(std::string name)
 {
-	std::cout << DARK_GREEN "Constructor ScavTrap for " END_COLOR;
-	std::cout << DARK_YELLOW << this->name_ << END_COLOR;
-	std::cout << DARK_GREEN " called." END_COLOR << std::endl;
+	this->name_ = name;
 	this->hp_ = 100;
 	this->mp_ = 50;
 	this->damage_ = 20;
+	std::cout << DARK_GREEN "Constructor ScavTrap for " END_COLOR;
+	std::cout << DARK_YELLOW << this->name_ << END_COLOR;
+	std::cout << DARK_GREEN " called." END_COLOR << std::endl;
 }
 
 ScavTrap::~ScavTrap()
