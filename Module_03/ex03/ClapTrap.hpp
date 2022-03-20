@@ -1,5 +1,5 @@
-#ifndef EX02_CLAPTRAP_HPP
-# define EX02_CLAPTRAP_HPP
+#ifndef EX03_CLAPTRAP_HPP
+# define EX03_CLAPTRAP_HPP
 # define YELLOW "\033[0;33m"
 # define PURPLE "\033[0;35m"
 # define RED "\033[0;31m"
@@ -21,7 +21,7 @@ protected:
 public:
 	ClapTrap();
 	ClapTrap(std::string name);
-	~ClapTrap();
+	virtual ~ClapTrap();
 
 	ClapTrap(const ClapTrap &other);
 
@@ -36,9 +36,10 @@ public:
 	int getMp() const;
 	int getDamage() const;
 
-	virtual void attack(const std::string& target);
+	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 };
+
 
 #endif
