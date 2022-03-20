@@ -1,8 +1,8 @@
 #ifndef EX03_FRAGTRAP_HPP
 # define EX03_FRAGTRAP_HPP
-# include "ScavTrap.hpp"
+# include "ClapTrap.hpp"
 
-class FragTrap : public ScavTrap
+class FragTrap : public ClapTrap
 {
 public:
 	FragTrap();

@@ -2,8 +2,8 @@
 
 int main()
 {
-	ScavTrap a("Sam");
-	ClapTrap *b = &a;
+	ScavTrap *a = new ScavTrap("Sam");
+	ClapTrap *b = a;
 	b->attack("Bob");
 
 	return 0;
