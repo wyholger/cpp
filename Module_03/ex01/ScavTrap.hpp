@@ -15,4 +15,4 @@ public:
 };
 
 
-#endif //EX01_SCAVTRAP_HPP
+#endif
