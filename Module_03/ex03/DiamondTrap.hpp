@@ -1,7 +1,7 @@
 #ifndef EX03_DIAMONDTRAP_HPP
 # define EX03_DIAMONDTRAP_HPP
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
 
 class DiamondTrap : public virtual ScavTrap, public virtual FragTrap
 {
@@ -15,4 +15,4 @@ private:
 };
 
 
-#endif //EX03_DIAMONDTRAP_HPP
+#endif

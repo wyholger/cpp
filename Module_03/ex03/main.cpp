@@ -1,10 +1,9 @@
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main()
 {
-	ScavTrap *a = new ScavTrap("Sam");
-	ClapTrap *b = a;
-	b->attack("Bob");
+	DiamondTrap a;
 
 	return 0;
 }
