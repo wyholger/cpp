@@ -3,101 +3,77 @@
 
 int main()
 {
-	Form a("fox", 10, 20);
-	std::cout << a << std::endl;
-	Bureaucrat b ("Bob", 15);
-	std::cout << b;
-//	{
-//		std::cout << YELLOW "___Test normal___" END << std::endl;
-//		try
-//		{
-//			Bureaucrat	robert;
-//			Bureaucrat	bob("Bob", 75);
-//			Bureaucrat	james("James", 1);
-//			Bureaucrat	henry("Henry", 150);
-//			std::cout << "Everything is a-OK !" << std::endl;
-//		}
-//		catch (Bureaucrat::GradeTooHighException_1& e)
-//		{
-//			std::cout << RED "Error : " << e.what() << END << std::endl;
-//		}
-//		catch (Bureaucrat::GradeTooLowException_1& e)
-//		{
-//			std::cout << RED "Error : " << e.what() << END << std::endl;
-//		}
-//	}
-//
-//	// Grade too high in constructor
-//	{
-//		std::cout << YELLOW "___Test too high in constructor___" END << std::endl;
-//		try
-//		{
-//			Bureaucrat	trevor("Trevor", 0);
-//			std::cout << "You should not see this" << std::endl;
-//		}
-//		catch (Bureaucrat::GradeTooHighException_1& e) {
-//			std::cout << RED "Error : " << e.what() << END << std::endl;
-//		}
-//		catch (Bureaucrat::GradeTooLowException_1& e)
-//		{
-//			std::cout << RED "Error : " << e.what() << END << std::endl;
-//		}
-//	}
-//
-//	// Grade too low in constructor
-//	{
-//		std::cout << YELLOW "___Test too low in constructor___" END << std::endl;
-//		try
-//		{
-//			Bureaucrat	trevor("Trevor", 151);
-//			std::cout << "You should not see this" << std::endl;
-//		}
-//		catch (Bureaucrat::GradeTooHighException_1& e)
-//		{
-//			std::cout << RED "Error : " << e.what() << END << std::endl;
-//		}
-//		catch (Bureaucrat::GradeTooLowException_1& e)
-//		{
-//			std::cout << RED "Error : " << e.what() << END << std::endl;
-//		}
-//	}
-//
-//	// Grade too high after increment
-//	{
-//		std::cout << YELLOW "___Test too high after increment___" END << std::endl;
-//		try
-//		{
-//			Bureaucrat	trevor("Trevor", 1);
-//			std::cout << trevor;
-//			trevor.incrGrade();
-//		}
-//		catch (Bureaucrat::GradeTooHighException_1& e)
-//		{
-//			std::cout << RED "Error : " << e.what() << END << std::endl;
-//		}
-//		catch (Bureaucrat::GradeTooLowException_1& e)
-//		{
-//			std::cout << RED "Error : " << e.what() << END << std::endl;
-//		}
-//	}
-//
-//	// Grade too low after decrement
-//	{
-//		std::cout << YELLOW "___Test too low after decrement___" END << std::endl;
-//		try
-//		{
-//			Bureaucrat	trevor("Trevor", 150);
-//			std::cout << trevor;
-//			trevor.decrGrade();
-//		}
-//		catch (Bureaucrat::GradeTooHighException_1& e)
-//		{
-//			std::cout << RED "Error : " << e.what() << END << std::endl;
-//		}
-//		catch (Bureaucrat::GradeTooLowException_1& e)
-//		{
-//			std::cout << RED "Error : " << e.what() << END << std::endl;
-//		}
-//	}
+	// Form with too high grade
+	std::cout << std::endl << "___Testing if form with too high grade___" << std::endl;
+	{
+		try
+		{
+			Form holidayForm("Holiday Form", 0, 50);
+			std::cout << "You should not see this" << std::endl;
+		}
+		catch(std::exception& e) {
+			std::cerr << RED "Error : " << e.what() << END << std::endl;
+		}
+	}
+
+	// Form with too low grade
+	std::cout << std::endl << "___Testing if form with too low grade___" << std::endl;
+	{
+		try
+		{
+			Form holidayForm("Holiday Form", 50, 151);
+			std::cout << "You should not see this" << std::endl;
+		}
+		catch(std::exception& e) {
+			std::cerr << RED "Error : " << e.what() << END << std::endl;
+		}
+	}
+
+	// Bureaucrat has too low grade to sign form
+	std::cout << std::endl << "___Testing if bureaucrat has too low grade to sign form___" << std::endl;
+	{
+		try
+		{
+			Bureaucrat	bob("Bob", 150);
+			Form		form("Regular Form", 50, 50);
+
+			bob.signForm(form);
+		}
+		catch(std::exception& e) {
+			std::cerr << RED "Error : " << e.what() << END << std::endl;
+		}
+	}
+
+	// Everything is fine
+	std::cout << std::endl << "___Testing if the form is already signed___" << std::endl;
+	{
+		try
+		{
+			Bureaucrat	john("John", 1);
+			Bureaucrat	mark("Mark", 1);
+			Form		form("Regular Form", 50, 50);
+			john.signForm(form);
+			mark.signForm(form);
+		}
+		catch(std::exception& e) {
+			std::cerr << RED "Error : " << e.what() << END << std::endl;
+		}
+	}
+
+	//
+	std::cout << std::endl << "___Testing if everything is fine___" << std::endl;
+	{
+		try
+		{
+			Bureaucrat	bob("Karl", 1);
+			Form		form("Regular Form", 50, 50);
+
+			bob.signForm(form);
+			std::cout << GREEN "Everything is a-OK!" END << std::endl;
+		}
+		catch(std::exception& e) {
+			std::cerr << RED "Error : " << e.what() << END << std::endl;
+		}
+	}
 	return 0;
 }

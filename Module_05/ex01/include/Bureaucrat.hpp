@@ -12,6 +12,9 @@
 # define END "\033[0;0m"
 # include <iostream>
 # include <exception>
+//# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -30,8 +33,9 @@ public:
 
 	void incrGrade(void);
 	void decrGrade(void);
+	void signForm(Form &form);
 
-	class GradeTooHighException_1 : std::exception
+	class GradeTooHighException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw()
@@ -40,12 +44,21 @@ public:
 		}
 	};
 
-	class GradeTooLowException_1 : std::exception
+	class GradeTooLowException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw()
 		{
 			return "Grade too low";
+		}
+	};
+
+	class FormIsAlreadySigned : public std::exception
+	{
+	public:
+		virtual const char *what() const throw()
+		{
+			return "Attempt to sign a form that is already signed";
 		}
 	};
 

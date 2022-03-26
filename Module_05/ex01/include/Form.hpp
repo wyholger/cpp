@@ -29,14 +29,15 @@ public:
 	Form(const Form &other);
 
 	const std::string &getName() const;
-	const int getExecutionGrade() const;
-	const int getRequiredGrade() const;
+	int getExecutionGrade() const;
+	int getRequiredGrade() const;
 	bool isSigningStatus() const;
 	void setSigningStatus(bool signingStatus);
 
 	void beSigned(Bureaucrat &bureaucrat);
+//	void signForm(bool can_sign, Bureaucrat &bureaucrat) const;
 
-	class GradeTooHighException : std::exception
+	class GradeTooHighException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw()
@@ -45,7 +46,7 @@ public:
 		}
 	};
 
-	class GradeTooLowException : std::exception
+	class GradeTooLowException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw()
@@ -54,12 +55,20 @@ public:
 		}
 	};
 
+	class FormIsAlreadySigned : public std::exception
+	{
+	public:
+		virtual const char *what() const throw()
+		{
+			return "Attempt to sign a form that is already signed";
+		}
+	};
+
 private:
 	const std::string _name;
 	const int _execution_grade;
 	const int _required_grade;
 	bool _signing_status;
-    Bureaucrat _br;
 };
 
 std::ostream& operator << (std::ostream &os, const Form& bureaucrat);

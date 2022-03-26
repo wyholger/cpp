@@ -11,7 +11,7 @@ Form::Form(std::string name): _name(name), _execution_grade(150), _required_grad
 
 }
 
-Form::Form(std::string name, int execution_grade, int required_grade): _name(name), _signing_status(false), _execution_grade(execution_grade), _required_grade(required_grade)
+Form::Form(std::string name, int execution_grade, int required_grade): _name(name), _execution_grade(execution_grade), _required_grade(required_grade), _signing_status(false)
 {
 	if (execution_grade < 1 || required_grade < 1)
 	{
@@ -33,12 +33,12 @@ const std::string &Form::getName() const
 	return _name;
 }
 
-const int Form::getExecutionGrade() const
+int Form::getExecutionGrade() const
 {
 	return _execution_grade;
 }
 
-const int Form::getRequiredGrade() const
+int Form::getRequiredGrade() const
 {
 	return _required_grade;
 }
@@ -60,16 +60,52 @@ void Form::setSigningStatus(bool signingStatus)
 	_signing_status = signingStatus;
 }
 
-Form::Form(const Form &other) : _execution_grade(other.getExecutionGrade()), _required_grade(other.getRequiredGrade()), _name(other.getName()), _signing_status(other.isSigningStatus())
+Form::Form(const Form &other) : _name(other.getName()), _execution_grade(other.getExecutionGrade()), _required_grade(other.getRequiredGrade()), _signing_status(other.isSigningStatus())
 {
 
 }
 
 void Form::beSigned(Bureaucrat &bureaucrat)
 {
-	if (bureaucrat.getGrade() < )
-
+	if (bureaucrat.getGrade() > this->getRequiredGrade() || this->isSigningStatus())
+	{
+		if (!this->isSigningStatus())
+		{
+			throw Form::GradeTooLowException();
+		}
+		else
+		{
+			throw Form::FormIsAlreadySigned();
+		}
+	}
+	this->setSigningStatus(true);
 }
+
+//void Form::signForm(bool can_sign, Bureaucrat &bureaucrat) const
+//{
+//	if (!can_sign)
+//	{
+//		std::cout << YELLOW << bureaucrat.getName() << END;
+//		std::cout << RED " couldn’t sign " END;
+//		std::cout << YELLOW << this->getName() << END;
+//		std::cout << RED " because " END;
+//		if (this->isSigningStatus())
+//		{
+//			std::cout << YELLOW "the form is already signed." END << std::endl;
+//		}
+//		else
+//		{
+//			std::cout << YELLOW "the bureaucrat has a small grade to sign this form." END << std::endl;
+//		}
+//	}
+//	else
+//	{
+//		std::cout << YELLOW << bureaucrat.getName() << END;
+//		std::cout << BLUE " signed " END;
+//		std::cout << YELLOW << this->getName() << END;
+//		std::cout << BLUE "." END << std::endl;
+//	}
+//}
 
 
 std::ostream &operator << (std::ostream &os, const Form &form)
