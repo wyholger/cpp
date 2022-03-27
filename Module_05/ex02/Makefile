@@ -8,10 +8,16 @@ RM =			rm -rf
 
 SRC =			src/main.cpp\
 				src/Bureaucrat.cpp\
-				src/Form.cpp
+				src/AForm.cpp\
+				src/RobotomyRequestForm.cpp\
+                src/ShrubberyCreationForm.cpp\
+                src/PresidentialPardonForm.cpp
 
 HDR =			include/Bureaucrat.hpp\
-				include/Form.hpp
+				include/AForm.hpp\
+				include/RobotomyRequestForm.hpp\
+                include/ShrubberyCreationForm.hpp\
+                include/PresidentialPardonForm.hpp
 
 OBJS =			$(SRC:.cpp=.o)
 

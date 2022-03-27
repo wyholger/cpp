@@ -1,5 +1,5 @@
-#ifndef EX02_FORM_HPP
-# define EX02_FORM_HPP
+#ifndef EX02_AFORM_HPP
+# define EX02_AFORM_HPP
 # define YELLOW "\033[0;33m"
 # define PURPLE "\033[0;35m"
 # define RED "\033[0;31m"
@@ -16,16 +16,16 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 public:
-	Form();
-	Form(std::string name);
-	Form(std::string name, int execution_grade, int required_grade);
-	virtual ~Form();
+	AForm();
+	AForm(std::string name);
+	AForm(std::string name, int execution_grade, int required_grade);
+	virtual ~AForm();
 
-	Form& operator = (const Form &other);
-	Form(const Form &other);
+	AForm& operator = (const AForm &other);
+	AForm(const AForm &other);
 
 	const std::string &getName() const;
 	int getExecutionGrade() const;
@@ -34,7 +34,8 @@ public:
 	void setSigningStatus(bool signingStatus);
 
 	void beSigned(Bureaucrat &bureaucrat);
-//	void signForm(bool can_sign, Bureaucrat &bureaucrat) const;
+	bool beExecuted(const Bureaucrat &bureaucrat) const;
+	virtual void execute(Bureaucrat const & executor) const = 0;
 
 	class GradeTooHighException : public std::exception
 	{
@@ -63,6 +64,24 @@ public:
 		}
 	};
 
+	class FormIsNotSigned : public std::exception
+	{
+	public:
+		virtual const char *what() const throw()
+		{
+			return "Attempt to execute an unsigned form";
+		}
+	};
+
+	class FileNotOpen : public std::exception
+	{
+	public:
+		virtual const char *what() const throw()
+		{
+			return "Failed to open file";
+		}
+	};
+
 private:
 	const std::string _name;
 	const int _execution_grade;
@@ -70,7 +89,7 @@ private:
 	bool _signing_status;
 };
 
-std::ostream& operator << (std::ostream &os, const Form& bureaucrat);
+std::ostream& operator << (std::ostream &os, const AForm& bureaucrat);
 
 
 #endif //EX01_FORM_HPP

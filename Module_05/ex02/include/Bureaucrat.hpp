@@ -12,9 +12,9 @@
 # define END "\033[0;0m"
 # include <iostream>
 # include <exception>
-//# include "Form.hpp"
+//# include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -33,7 +33,8 @@ public:
 
 	void incrGrade(void);
 	void decrGrade(void);
-	void signForm(Form &form);
+	void signForm(AForm &form);
+	void executeForm(AForm const & form);
 
 	class GradeTooHighException : public std::exception
 	{
