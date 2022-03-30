@@ -116,6 +116,6 @@ void testing_subject(void)
 int main()
 {
 	testing_my();
-	testing_subject();
+//	testing_subject();
 	return 0;
 }
