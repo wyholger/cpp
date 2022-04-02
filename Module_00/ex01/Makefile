@@ -1,23 +1,34 @@
-NAME			= phonebook
-SRCS			= main.cpp PhoneBook.cpp Contact.cpp
-OBJS			= $(SRCS:.cpp=.o)
+NAME =			phonebook
 
-COMPILER		= clang++
-RM				= rm -f
-FLAGS			= -Wall -Wextra -Werror -I.
+CC =			clang++
 
+FLAGS =			-Wall -Wextra -Werror -std=c++98
+
+RM =			rm -rf
+
+SRC =			main.cpp\
+				PhoneBook.cpp\
+				Contact.cpp
+
+HDR =			PhoneBook.hpp\
+				Contact.hpp		
+
+OBJS =			$(SRC:.cpp=.o)
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS)
-				$(COMPILER) $(FLAGS) -o  $(NAME) $(OBJS)
+$(NAME) :		$(OBJS)
+				$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+
+%.o:%.cpp $(HDR) Makefile
+				$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-				$(RM) $(OBJS)
+				@$(RM) $(OBJS)
 
 fclean:			clean
-				$(RM) $(NAME)
+				@$(RM) $(NAME)
 
-re:				fclean $(NAME)
+re:				fclean all
 
-.PHONY:			all clean fclean re
+.PHONY:			all, clean, fclean, re

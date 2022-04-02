@@ -1,7 +1,7 @@
 #ifndef EX03_WEAPON_HPP
 # define EX03_WEAPON_HPP
 # include <iostream>
-# define YELLOW "\033[1;33m"
+# define YELLOW "\033[0;33m"
 # define PURPLE "\033[0;35m"
 # define RED "\033[0;31m"
 # define END_COLOR "\033[0;0m"

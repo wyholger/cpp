@@ -4,7 +4,7 @@
 
 #ifndef EX06_HARL_HPP
 # define EX06_HARL_HPP
-# define YELLOW "\033[1;33m"
+# define YELLOW "\033[0;33m"
 # define PURPLE "\033[0;35m"
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
