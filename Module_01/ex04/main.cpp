@@ -27,9 +27,9 @@ int main(int argc, char **argv) {
 	file_out_name += ".replace";
 	std::ifstream in(argv[1]);
 	std::ofstream out;
-	out.open(file_out_name);
 	if (in.is_open())
 	{
+		out.open(file_out_name);
 		while (getline(in, line))
 		{
 			line = create_new_line(line, argv[2], argv[3]);

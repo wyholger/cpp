@@ -12,10 +12,10 @@ OBJS =			$(SRC:.cpp=.o)
 
 all:			$(NAME)
 
-$(NAME) :		$(OBJS) Makefile
+$(NAME) :		$(OBJS)
 				$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
-%.o:%.cpp $(HDR)
+%.o:%.cpp Makefile
 				$(CC) $(FLAGS) -c $< -o $@
 
 clean:

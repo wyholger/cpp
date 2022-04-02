@@ -9,11 +9,11 @@ Zombie::Zombie(std::string name) {
 }
 
 Zombie::~Zombie() {
-	std::cout << "\033[0;32mZombie by name \033[0;0m\033[1;33m" << this->_name << "\033[0;0m\033[0;31m is at rest.\033[0;0m" << std::endl;
+	std::cout << "\033[0;32mZombie by name \033[0;0m\033[0;33m" << this->_name << "\033[0;0m\033[0;31m is at rest.\033[0;0m" << std::endl;
 }
 
 void Zombie::announce() const {
-	std::cout << "\033[1;33m" << this->_name << "\033[0;0m: \033[0;35mBraiiiiiiinnnzzzZ...\033[0;0m" << std::endl;
+	std::cout << "\033[0;33m" << this->_name << "\033[0;0m: \033[0;35mBraiiiiiiinnnzzzZ...\033[0;0m" << std::endl;
 }
 
 void Zombie::setName(const std::string name) {
