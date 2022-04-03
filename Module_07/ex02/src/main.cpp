@@ -1,6 +1,5 @@
 #include "../include/Array.hpp"
 #include <random>
-#include <chrono>
 
 int main()
 {
