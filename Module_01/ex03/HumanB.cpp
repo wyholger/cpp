@@ -5,10 +5,16 @@
 #include "HumanB.hpp"
 
 void HumanB::attack() {
+	if (!_weapon)
+	{
+		std::cout << YELLOW << this->_name << PURPLE " weapon is not equip." END_COLOR << std::endl;
+		return;
+	}
 	std::cout << YELLOW << this->_name << END_COLOR PURPLE ATTACK_MSG END_COLOR RED << this->_weapon->getType() << END_COLOR << std::endl;
 }
 
-HumanB::HumanB(const std::string &name) {
+HumanB::HumanB(const std::string &name) : _weapon(NULL)
+{
 	setName(name);
 }
 

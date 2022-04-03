@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <sstream>
 
 std::string create_new_line (std::string line, std::string to_find, std::string replace)
 {
@@ -18,18 +17,29 @@ std::string create_new_line (std::string line, std::string to_find, std::string 
 int main(int argc, char **argv) {
 	std::string line;
 	std::string file_out_name;
+	const char *char_file_out_name;
 	if (argc != 4)
 	{
 		std::cout << "You have to enter 3 arguments: 1.[Name_file] 2.[The_replaced_word] 3.[Replacement_word]" << std::endl;
-		return 0;
+		return 1;
 	}
+	std::string tmp(argv[2]);
+	if (tmp.empty())
+	{
+		std::cout << "Argument 2.[The_replaced_word] is empty." << std::endl;
+		return 1;
+	}
+	tmp = argv[3];
+	if (tmp.empty())
+		std::cout << "All " << argv[2] << " will be deleted." << std::endl;
 	file_out_name = argv[1];
 	file_out_name += ".replace";
+	char_file_out_name = file_out_name.c_str();
 	std::ifstream in(argv[1]);
 	std::ofstream out;
 	if (in.is_open())
 	{
-		out.open(file_out_name);
+		out.open(char_file_out_name);
 		while (getline(in, line))
 		{
 			line = create_new_line(line, argv[2], argv[3]);
